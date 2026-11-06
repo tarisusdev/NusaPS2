@@ -23,7 +23,6 @@ export async function inspectFileHeader(file) {
 
     // ELF magic: 0x7F 0x45 0x4C 0x46 (0x7F 'E' 'L' 'F')
     if (bytes[0] === 0x7f && bytes[1] === 0x45 && bytes[2] === 0x4c && bytes[3] === 0x46) {
-      const is64 = bytes[4] === 2;
       const isMips = bytes[18] === 8 || bytes[18] === 0x08; // EM_MIPS
       return {
         type: 'ELF',

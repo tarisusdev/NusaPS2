@@ -9,20 +9,24 @@ Please be respectful and considerate of all contributors. See [CODE_OF_CONDUCT.m
 ## Development Workflow
 
 1. **Fork the repo** and clone your fork locally:
+
    ```bash
-   git clone https://github.com/wawansaid/nusaps2.git
-   cd nusaps2
+   git clone https://github.com/tarisusdev/NusaPS2.git
+   cd NusaPS2
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 3. **Start the local development server**:
+
    ```bash
    npm run dev
    ```
+
    Open `http://localhost:3000` in Google Chrome, Microsoft Edge, Brave, or Firefox.
 
 4. **Verify types and build**:

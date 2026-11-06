@@ -2,7 +2,7 @@
  * Game Card Component for NusaPS2
  */
 import { icons } from '../utils/icons.js';
-import { formatBytes, formatRelativeTime, formatPlayTime } from '../utils/formatUtils.js';
+import { formatBytes, formatRelativeTime } from '../utils/formatUtils.js';
 
 export function renderGameCard(game) {
   const formatColors = {

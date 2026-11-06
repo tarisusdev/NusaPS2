@@ -35,7 +35,7 @@ export function renderHeader() {
 
       <div class="flex items-center gap-2.5 sm:gap-3">
         <!-- Star on GitHub Button -->
-        <a href="https://github.com/wawansaid/nusaps2" 
+        <a href="https://github.com/tarisusdev/NusaPS2" 
            target="_blank" 
            rel="noopener noreferrer" 
            class="btn-press flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500/10 to-yellow-500/10 hover:from-amber-500/20 hover:to-yellow-500/20 text-yellow-300 border border-yellow-500/30 text-xs font-semibold shadow-[0_0_15px_-3px_rgba(234,179,8,0.2)] transition-all cursor-pointer group"

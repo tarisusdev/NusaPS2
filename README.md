@@ -3,9 +3,9 @@
 # 🎮 NusaPS2 — Web-Based PlayStation 2 Emulator
 
 **The High-Performance In-Browser PlayStation 2 Emulator & Console Dashboard**  
-*Powered by the Play! WebAssembly Core, WebGL 2.0, Vite & Vanilla JavaScript*
+_Powered by the Play! WebAssembly Core, WebGL 2.0, Vite & Vanilla JavaScript_
 
-[![CI](https://github.com/wawansaid/nusaps2/actions/workflows/ci.yml/badge.svg)](https://github.com/wawansaid/nusaps2/actions)
+[![CI](https://github.com/tarisusdev/NusaPS2/actions/workflows/ci.yml/badge.svg)](https://github.com/tarisusdev/NusaPS2/actions)
 [![Live Demo](https://img.shields.io/badge/Demo-Live_Online-8b5cf6?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ais-pre-2l6dtqf3lp2mvtklhwu3nu-452188101421.asia-northeast1.run.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-3b82f6?style=for-the-badge&logo=open-source-initiative&logoColor=white)](LICENSE)
 [![WebAssembly](https://img.shields.io/badge/Core-WebAssembly_64--bit-654ff0?style=for-the-badge&logo=webassembly&logoColor=white)](https://webassembly.org/)
@@ -34,10 +34,10 @@
 
 ## 📸 Screenshots
 
-| Console Dashboard & Game Library | WebAssembly 60 FPS Emulation Viewport |
-| :---: | :---: |
+|                     Console Dashboard & Game Library                     |                      WebAssembly 60 FPS Emulation Viewport                      |
+| :----------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
 | <img src="docs/screenshots/dashboard.jpg" alt="Dashboard" width="450" /> | <img src="docs/screenshots/gameplay.jpg" alt="Gameplay Viewport" width="450" /> |
-| *Dark gaming console interface with PS2 disc library cards* | *Hardware WebGL 2.0 rasterization with real-time 60 FPS & CRT scanlines* |
+|       _Dark gaming console interface with PS2 disc library cards_        |    _Hardware WebGL 2.0 rasterization with real-time 60 FPS & CRT scanlines_     |
 
 ## 🌟 Overview
 
@@ -49,14 +49,14 @@ By combining **WebAssembly pthreads**, **WebGL 2.0 hardware acceleration**, and 
 
 ## ⚡ Why NusaPS2 Stands Out
 
-| Feature | Traditional Web Emulators | NusaPS2 Implementation |
-| :--- | :--- | :--- |
-| **Large ISO Files (1–4.7 GB)** | ❌ Tab crashes from RAM OOM | ✅ **Streaming Block Device** (`File.slice()`) streams sectors on-demand |
-| **BIOS Requirement** | ❌ Requires proprietary SCPH BIOS dumps | ✅ **Built-in HLE BIOS** (Runs homebrew & games legally out-of-the-box) |
-| **Graphics Pipeline** | ⚠️ Software/Canvas 2D fallback | ✅ **Hardware-Accelerated WebGL 2.0** with OffscreenCanvas context |
-| **Controller Support** | ⚠️ Basic keyboard mapping only | ✅ **W3C Gamepad API (60Hz)** with real-time DualShock 2 SVG visualizer |
-| **Save Data Persistence** | ⚠️ Volatile local storage | ✅ **Dual 8MB MagicGate Memory Cards** (`.bin` / `.ps2`) in IndexedDB |
-| **Client Privacy** | ❌ Uploads ROMs to remote server | ✅ **100% Client-Side Sandbox** (Zero server uploads or proxies) |
+| Feature                        | Traditional Web Emulators               | NusaPS2 Implementation                                                   |
+| :----------------------------- | :-------------------------------------- | :----------------------------------------------------------------------- |
+| **Large ISO Files (1–4.7 GB)** | ❌ Tab crashes from RAM OOM             | ✅ **Streaming Block Device** (`File.slice()`) streams sectors on-demand |
+| **BIOS Requirement**           | ❌ Requires proprietary SCPH BIOS dumps | ✅ **Built-in HLE BIOS** (Runs homebrew & games legally out-of-the-box)  |
+| **Graphics Pipeline**          | ⚠️ Software/Canvas 2D fallback          | ✅ **Hardware-Accelerated WebGL 2.0** with OffscreenCanvas context       |
+| **Controller Support**         | ⚠️ Basic keyboard mapping only          | ✅ **W3C Gamepad API (60Hz)** with real-time DualShock 2 SVG visualizer  |
+| **Save Data Persistence**      | ⚠️ Volatile local storage               | ✅ **Dual 8MB MagicGate Memory Cards** (`.bin` / `.ps2`) in IndexedDB    |
+| **Client Privacy**             | ❌ Uploads ROMs to remote server        | ✅ **100% Client-Side Sandbox** (Zero server uploads or proxies)         |
 
 ---
 
@@ -119,18 +119,23 @@ NusaPS2 bridges the low-level C++ Emscripten runtime of the Play! emulator to th
 ```
 
 ### 1. WebAssembly Multithreading & Cross-Origin Isolation
+
 The Play! core utilizes Emscripten pthreads for multithreaded execution of the Emotion Engine, Vector Units, and Graphics Synthesizer. To enable `SharedArrayBuffer` in modern browsers, the server must supply Cross-Origin Isolation headers:
+
 ```http
 Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp
 ```
+
 - **Local Dev Server**: Handled natively by Vite in `vite.config.ts`.
 - **Iframe / Embedded Environments**: NusaPS2 registers `coi-serviceworker.js` to ensure isolation is established even when running inside sandboxed previews.
 
 ### 2. Streaming Block Device Driver (`DiscImageDevice`)
+
 Standard PS2 DVD disc images range from 1 GB to 4.7 GB. Attempting to buffer an entire ISO into a JavaScript `ArrayBuffer` instantly exceeds browser memory quotas and crashes the tab.
 
 NusaPS2 implements a virtual streaming block device that hooks into the Emscripten optical drive subsystem:
+
 ```javascript
 export class DiscImageDevice {
   constructor(module) {
@@ -164,9 +169,11 @@ export class DiscImageDevice {
 ```
 
 ### 3. Graphics Synthesizer & OffscreenCanvas
+
 The Graphics Synthesizer (GS) output is routed to an `OffscreenCanvas` WebGL 2.0 context (`setupOffscreenCanvas`). Draw commands from the PS2 GS pipeline are translated directly into WebGL2 shaders and rasterized at native 60 FPS.
 
 ### 4. Controller Input Pipeline
+
 The Play! WebAssembly core receives input events through keyboard event dispatchers attached to `#outputCanvas`. The `GamepadManager` runs inside a 60Hz `requestAnimationFrame` loop, reading active gamepads via `navigator.getGamepads()`, applying a 35% analog deadzone, and converting button presses and stick coordinates into sub-millisecond keyboard event dispatches.
 
 ---
@@ -174,27 +181,33 @@ The Play! WebAssembly core receives input events through keyboard event dispatch
 ## 💻 Installation & Usage
 
 ### Prerequisites
+
 - **Node.js**: v18.0.0 or v20.0.0+
 - **Browser**: Modern desktop browser supporting WebGL2 and SharedArrayBuffer (Google Chrome, Microsoft Edge, Brave, or Mozilla Firefox).
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/wawansaid/nusaps2.git
-cd nusaps2
+git clone https://github.com/tarisusdev/NusaPS2.git
+cd NusaPS2
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Start Local Development Server
+
 ```bash
 npm run dev
 ```
+
 Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ### 4. Production Build & Preview
+
 ```bash
 # Compile and bundle production assets to /dist
 npm run build
@@ -204,6 +217,7 @@ npm run preview
 ```
 
 ### 5. Typecheck & Linting
+
 ```bash
 npm run lint
 ```
@@ -212,13 +226,13 @@ npm run lint
 
 ## 📂 Supported Formats
 
-| Format | Extension | Description | Status |
-| :--- | :--- | :--- | :--- |
-| **ISO-9660** | `.iso` | Standard PlayStation 2 DVD/CD disc images | ✅ Supported (Streaming) |
-| **MIPS ELF** | `.elf` | PlayStation 2 Homebrew / Executable binaries | ✅ Supported (MEMFS Staging) |
-| **Compressed Hunks** | `.chd` | MAME / Play! Compressed disc archive | ✅ Supported |
-| **Raw Disc Tracks** | `.bin`, `.mdf` | Binary disc image dumps | ✅ Supported |
-| **Compressed ISO** | `.cso`, `.isz` | Compressed disc images | ✅ Supported |
+| Format               | Extension      | Description                                  | Status                       |
+| :------------------- | :------------- | :------------------------------------------- | :--------------------------- |
+| **ISO-9660**         | `.iso`         | Standard PlayStation 2 DVD/CD disc images    | ✅ Supported (Streaming)     |
+| **MIPS ELF**         | `.elf`         | PlayStation 2 Homebrew / Executable binaries | ✅ Supported (MEMFS Staging) |
+| **Compressed Hunks** | `.chd`         | MAME / Play! Compressed disc archive         | ✅ Supported                 |
+| **Raw Disc Tracks**  | `.bin`, `.mdf` | Binary disc image dumps                      | ✅ Supported                 |
+| **Compressed ISO**   | `.cso`, `.isz` | Compressed disc images                       | ✅ Supported                 |
 
 > **Pre-packaged Homebrew**: NusaPS2 comes with **wLaunchELF v4.43a** (the open-source PS2 homebrew file manager and memory card browser), ready to launch with one click on the dashboard.
 
@@ -292,8 +306,8 @@ Contributions make the open-source community an amazing place to learn, inspire,
 1. **Fork the Repository**: Click "Fork" at the top right of the GitHub page.
 2. **Clone your Fork**:
    ```bash
-   git clone https://github.com/wawansaid/nusaps2.git
-   cd nusaps2
+   git clone https://github.com/tarisusdev/NusaPS2.git
+   cd NusaPS2
    ```
 3. **Create a Feature Branch**:
    ```bash
@@ -329,7 +343,7 @@ Please review [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_O
 
 <div align="center">
 
-Crafted with passion for retro computing and WebAssembly by [Wawan Said](https://github.com/wawansaid) & Contributors.
+Crafted with passion for retro computing and WebAssembly by [tarisusdev](https://github.com/tarisusdev) & Contributors.
 
 ⭐ **If you find this project exciting, please consider starring it on GitHub!** ⭐
 

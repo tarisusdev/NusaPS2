@@ -5,7 +5,7 @@ import { icons } from '../utils/icons.js';
 import { appState } from '../app/state.js';
 import { emulatorAdapter } from '../emulator/EmulatorAdapter.js';
 import { gamepadManager } from '../controllers/GamepadManager.js';
-import { formatBytes, formatRelativeTime } from '../utils/formatUtils.js';
+import { formatBytes } from '../utils/formatUtils.js';
 import { renderGameCard } from '../components/GameCard.js';
 
 export function renderDashboard() {
@@ -15,8 +15,7 @@ export function renderDashboard() {
   const gamepads = gamepadManager.connectedGamepads;
   const storage = appState.storageQuota;
 
-  // Filter recently played and recently added
-  const recentlyPlayed = [...games].filter((g) => g.lastPlayed).sort((a, b) => b.lastPlayed - a.lastPlayed).slice(0, 3);
+  // Filter recently added
   const recentlyAdded = [...games].sort((a, b) => b.dateAdded - a.dateAdded).slice(0, 4);
 
   return `

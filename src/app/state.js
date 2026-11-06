@@ -1,7 +1,7 @@
 /**
  * Central Reactive State Store for NusaPS2
  */
-import { getAllGames, seedDefaultHomebrewIfEmpty } from '../storage/gameRepository.js';
+import { seedDefaultHomebrewIfEmpty } from '../storage/gameRepository.js';
 import { getStorageQuotaInfo } from '../utils/fileUtils.js';
 
 class AppState {

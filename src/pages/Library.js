@@ -15,7 +15,7 @@ export function renderLibrary() {
   const storage = appState.storageQuota;
 
   // Filter games
-  let filtered = games.filter((g) => {
+  const filtered = games.filter((g) => {
     if (activeFilter !== 'ALL' && g.format?.toUpperCase() !== activeFilter) {
       return false;
     }

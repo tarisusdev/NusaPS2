@@ -1,0 +1,15 @@
+# Dependencies & package locks
+node_modules/
+package-lock.json
+bun.lock
+
+# Build & output directories
+dist/
+build/
+coverage/
+
+# Third-party compiled emulator binaries and service workers
+public/emulator/
+public/coi-serviceworker.js
+*.min.js
+*.wasm

@@ -4,7 +4,7 @@
  * and a fully configurable keyboard mapping interface.
  */
 import { gamepadManager } from '../controllers/GamepadManager.js';
-import { getKeyMap, updateKeyBinding, resetKeyMap, DEFAULT_KEY_MAP } from '../controllers/InputMapper.js';
+import { getKeyMap } from '../controllers/InputMapper.js';
 import { icons } from '../utils/icons.js';
 
 let activeRebindAction = null;

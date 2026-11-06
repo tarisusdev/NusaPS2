@@ -97,16 +97,16 @@ export function renderAbout() {
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-          <a href="https://github.com/wawansaid/nusaps2" target="_blank" rel="noopener noreferrer" class="btn-press flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-xs font-semibold transition-all">
+          <a href="https://github.com/tarisusdev/NusaPS2" target="_blank" rel="noopener noreferrer" class="btn-press flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-xs font-semibold transition-all">
             <span class="text-yellow-400">${icons.star}</span>
             <span>Star on GitHub</span>
           </a>
 
-          <a href="https://github.com/wawansaid/nusaps2/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn-press flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-xs font-semibold transition-all">
+          <a href="https://github.com/tarisusdev/NusaPS2/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn-press flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-xs font-semibold transition-all">
             <span>🤝 Contribute</span>
           </a>
 
-          <a href="https://github.com/wawansaid/nusaps2/issues" target="_blank" rel="noopener noreferrer" class="btn-press flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-xs font-semibold transition-all">
+          <a href="https://github.com/tarisusdev/NusaPS2/issues" target="_blank" rel="noopener noreferrer" class="btn-press flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-xs font-semibold transition-all">
             <span>🐛 Report Issue</span>
           </a>
         </div>
@@ -124,8 +124,8 @@ export function renderAbout() {
         <div class="space-y-2 text-xs text-slate-400 font-['JetBrains_Mono']">
           <div class="flex items-center justify-between p-2 rounded-lg bg-white/[0.02] border border-white/5">
             <span>NusaPS2 GitHub Repository</span>
-            <a href="https://github.com/wawansaid/nusaps2" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 flex items-center gap-1 font-semibold">
-              github.com/wawansaid/nusaps2 ${icons.externalLink}
+            <a href="https://github.com/tarisusdev/NusaPS2" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 flex items-center gap-1 font-semibold">
+              github.com/tarisusdev/NusaPS2 ${icons.externalLink}
             </a>
           </div>
           <div class="flex items-center justify-between p-2 rounded-lg bg-white/[0.02] border border-white/5">

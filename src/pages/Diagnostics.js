@@ -7,8 +7,6 @@ import { icons } from '../utils/icons.js';
 import { emulatorAdapter } from '../emulator/EmulatorAdapter.js';
 import { checkBrowserEnvironment } from '../emulator/EmulatorLoader.js';
 import { gamepadManager } from '../controllers/GamepadManager.js';
-import { appState } from '../app/state.js';
-import { formatBytes } from '../utils/formatUtils.js';
 
 export function renderDiagnostics() {
   const env = checkBrowserEnvironment();
@@ -18,10 +16,9 @@ export function renderDiagnostics() {
   const logs = emulatorAdapter.getLogs();
   const connectedGamepads = Array.from(gamepadManager.connectedGamepads.values());
   const activeGamepad = gamepadManager.getActiveGamepad();
-  const storage = appState.storageQuota;
 
   // WebGL context inspection
-  let glInfo = {
+  const glInfo = {
     supported: false,
     version: 'Unavailable',
     vendor: 'Unknown',

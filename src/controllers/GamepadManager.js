@@ -3,7 +3,7 @@
  * Interfaces with the browser Gamepad API and bridges physical controllers
  * to the Play! WebAssembly emulator canvas via keyboard event injection.
  */
-import { DEFAULT_KEY_MAP, GAMEPAD_BUTTON_MAP, getKeyMap } from './InputMapper.js';
+import { GAMEPAD_BUTTON_MAP, getKeyMap } from './InputMapper.js';
 
 class GamepadManager {
   constructor() {

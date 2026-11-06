@@ -4,7 +4,7 @@
  * Implements real PS2 emulation methods with standardized status reporting.
  */
 import { EMULATOR_STATUS, DEFAULT_EMULATOR_CONFIG } from './emulatorConfig.js';
-import { initializePlayCore, checkBrowserEnvironment } from './EmulatorLoader.js';
+import { initializePlayCore } from './EmulatorLoader.js';
 import { updateGameStats } from '../storage/gameRepository.js';
 
 class EmulatorAdapter {
@@ -321,7 +321,7 @@ class EmulatorAdapter {
   /**
    * Save State — clearly returns NOT_SUPPORTED if core doesn't expose it
    */
-  saveState(slot = 0) {
+  saveState(_slot = 0) {
     this.log('Save-state requested: Play! WebAssembly core utilizes native 8MB Memory Cards.');
     return {
       supported: false,
@@ -333,7 +333,7 @@ class EmulatorAdapter {
   /**
    * Load State — clearly returns NOT_SUPPORTED if core doesn't expose it
    */
-  loadState(slot = 0) {
+  loadState(_slot = 0) {
     this.log('Load-state requested: Play! WebAssembly core utilizes native 8MB Memory Cards.');
     return {
       supported: false,

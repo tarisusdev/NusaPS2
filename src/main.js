@@ -10,6 +10,7 @@ import { renderHeader } from './components/Header.js';
 import { renderDashboard } from './pages/Dashboard.js';
 import { renderLibrary, setLibraryFilter, setLibrarySort, setLibrarySearch } from './pages/Library.js';
 import { renderEmulator } from './pages/Emulator.js';
+import { renderGameCard } from './components/GameCard.js';
 import { updateEmulatorPlayerUI } from './components/EmulatorPlayer.js';
 import { renderControllerPanel, initControllerVisualizer, getActiveRebindAction, setActiveRebindAction } from './components/ControllerPanel.js';
 import { renderSaveData, loadSaveBackups } from './pages/SaveData.js';
@@ -82,7 +83,7 @@ async function initApp() {
   });
 
   // Listen to Emulator status changes
-  emulatorAdapter.subscribe(({ event, status, fps, elapsedSeconds, message }) => {
+  emulatorAdapter.subscribe(({ event, fps, elapsedSeconds, message }) => {
     if (event === 'status_change') {
       const sidebarEl = document.getElementById('sidebar-container');
       if (sidebarEl) sidebarEl.innerHTML = renderSidebar();
@@ -214,7 +215,7 @@ async function launchGameById(gameId) {
   }
 }
 
-function promptFileSelect(hintFilename = '') {
+function promptFileSelect(_hintFilename = '') {
   return new Promise((resolve) => {
     const input = document.createElement('input');
     input.type = 'file';
