@@ -1,0 +1,6 @@
+{
+  "name": "NusaPS2",
+  "description": "Web-Based PlayStation 2 Emulator & Console Dashboard powered by Play! WebAssembly",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

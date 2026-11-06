@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NusaPS2 — Web-Based PlayStation 2 Emulator</title>
+    <meta name="description" content="Web-Based PlayStation 2 Emulator & Console Dashboard powered by Play! WebAssembly." />
+    <meta property="og:title" content="NusaPS2 — Web-Based PlayStation 2 Emulator" />
+    <meta property="og:description" content="Web-Based PlayStation 2 Emulator & Console Dashboard powered by Play! WebAssembly." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Enable Cross-Origin Isolation for WebAssembly threads / SharedArrayBuffer -->
+    <script src="/coi-serviceworker.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#070913] text-[#e2e8f0] antialiased selection:bg-purple-600 selection:text-white font-['Plus_Jakarta_Sans',sans-serif] overflow-x-hidden">
+    <div id="app" class="min-h-screen w-full flex bg-[#070913]"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
